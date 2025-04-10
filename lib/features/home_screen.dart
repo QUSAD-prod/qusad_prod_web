@@ -102,10 +102,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Opacity(
                       opacity: _logoOpacity * _logoOpacity,
                       child: Padding(
-                        padding: EdgeInsets.only(bottom: 24),
-                        child: Icon(
-                          Icons.arrow_downward_rounded,
-                          size: 24 * _logoOpacity * _logoOpacity,
+                        padding: EdgeInsets.only(bottom: 12),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(100),
+                          onTap:
+                              _logoOpacity > 0.9
+                                  ? () => _controller.animateTo(
+                                    100.h,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                  )
+                                  : null,
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 24 * _logoOpacity * _logoOpacity,
+                            ),
+                          ),
                         ),
                       ),
                     ),
