@@ -172,6 +172,31 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Opacity(
+              opacity: 1 - _logoOpacity * _logoOpacity,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 12, right: 2.w),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100),
+                  onTap:
+                      () => _controller.animateTo(
+                        0,
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Icon(
+                      Icons.arrow_upward_rounded,
+                      size: 24 * (1 - _logoOpacity * _logoOpacity),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
