@@ -61,35 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Opacity(
             opacity: _logoOpacity,
-            child: SizedBox(
-              width: 100.w,
-              height: 100.h,
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'QUSAD.prod',
-                            style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 64),
-                          ),
-                          Text(
-                            'Middle Flutter Developer',
-                            style: GoogleFonts.raleway(
-                              fontWeight: FontWeight.w100,
-                              fontSize: 24,
-                              height: 0.5,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: SizedBox(width: 100.w, height: 100.h, child: logo()),
           ),
           SingleChildScrollView(
             controller: _controller,
@@ -97,33 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(
                   height: 100.h,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Opacity(
-                      opacity: _logoOpacity * _logoOpacity,
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 12),
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(100),
-                          onTap:
-                              _logoOpacity > 0.9
-                                  ? () => _controller.animateTo(
-                                    100.h,
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.easeInOut,
-                                  )
-                                  : null,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Icon(
-                              Icons.arrow_downward_rounded,
-                              size: 24 * _logoOpacity * _logoOpacity,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: Align(alignment: Alignment.bottomCenter, child: downArrow()),
                 ),
                 Opacity(
                   opacity: 1 - _logoOpacity,
@@ -172,32 +118,85 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Opacity(
-              opacity: 1 - _logoOpacity * _logoOpacity,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 12, right: 2.w),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(100),
-                  onTap:
-                      () => _controller.animateTo(
-                        0,
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Icon(
-                      Icons.arrow_upward_rounded,
-                      size: 24 * (1 - _logoOpacity * _logoOpacity),
-                    ),
+          upArrow(),
+        ],
+      ),
+    );
+  }
+
+  Widget logo() {
+    return Column(
+      children: [
+        Expanded(
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'QUSAD.prod',
+                  style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 64),
+                ),
+                Text(
+                  'Middle Flutter Developer',
+                  style: GoogleFonts.raleway(
+                    fontWeight: FontWeight.w100,
+                    fontSize: 24,
+                    height: 0.5,
                   ),
                 ),
-              ),
+              ],
             ),
           ),
-        ],
+        ),
+      ],
+    );
+  }
+
+  Opacity downArrow() {
+    return Opacity(
+      opacity: _logoOpacity * _logoOpacity,
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 12),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(100),
+          onTap:
+              _logoOpacity > 0.9
+                  ? () => _controller.animateTo(
+                    100.h,
+                    duration: Duration(milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  )
+                  : null,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Icon(Icons.arrow_downward_rounded, size: 24 * _logoOpacity * _logoOpacity),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget upArrow() {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Opacity(
+        opacity: 1 - _logoOpacity * _logoOpacity,
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 12, right: 2.w),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(100),
+            onTap:
+                () => _controller.animateTo(
+                  0,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                ),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Icon(Icons.arrow_upward_rounded, size: 24 * (1 - _logoOpacity * _logoOpacity)),
+            ),
+          ),
+        ),
       ),
     );
   }
