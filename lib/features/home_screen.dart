@@ -32,11 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void scrollListenner() {
     _position = _controller.position;
     // debugPrint(_position.pixels.toString());
-    if (_position.pixels >= 0 && _position.pixels < 50.h) {
+    if (_position.pixels >= 0 && _position.pixels < 70.h) {
       setState(() {
-        _logoOpacity = 1 - _position.pixels / 50.h;
+        _logoOpacity = 1 - _position.pixels / 70.h;
       });
-    } else if (_position.pixels > 50.h) {
+    } else if (_position.pixels > 70.h) {
       setState(() {
         _logoOpacity = 0;
       });
@@ -57,92 +57,108 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         elevation: 0,
       ),
-      body: SingleChildScrollView(
-        controller: _controller,
-        child: Column(
-          children: [
-            Opacity(
-              opacity: _logoOpacity,
-              child: SizedBox(
-                width: 100.w,
-                height: 100.h,
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'QUSAD.prod',
-                              style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 64),
+      body: Stack(
+        children: [
+          Opacity(
+            opacity: _logoOpacity,
+            child: SizedBox(
+              width: 100.w,
+              height: 100.h,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'QUSAD.prod',
+                            style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 64),
+                          ),
+                          Text(
+                            'Middle Flutter Developer',
+                            style: GoogleFonts.raleway(
+                              fontWeight: FontWeight.w100,
+                              fontSize: 24,
+                              height: 0.5,
                             ),
-                            Text(
-                              'Middle Flutter Developer',
-                              style: GoogleFonts.raleway(
-                                fontWeight: FontWeight.w100,
-                                fontSize: 24,
-                                height: 0.5,
-                              ),
-                            ),
-                          ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            controller: _controller,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100.h,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Opacity(
+                      opacity: _logoOpacity * _logoOpacity,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 24),
+                        child: Icon(
+                          Icons.arrow_downward_rounded,
+                          size: 24 * _logoOpacity * _logoOpacity,
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 24),
-                      child: Icon(Icons.arrow_downward_rounded, size: 24),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-            Opacity(
-              opacity: 1 - _logoOpacity,
-              child: Container(
-                width: 100.w,
-                padding: EdgeInsets.only(top: kToolbarHeight + 28, left: 2.w, right: 2.w),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Text(
-                        'About me',
-                        style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 64),
-                      ),
-                    ),
-                    SizedBox(height: 32),
-                    CircleAvatar(
-                      radius: 100,
-                      backgroundColor: Colors.transparent,
+                Opacity(
+                  opacity: 1 - _logoOpacity,
+                  child: Container(
+                    width: 100.w,
+                    padding: EdgeInsets.only(top: kToolbarHeight + 28, left: 2.w, right: 2.w),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Text(
+                            'About me',
+                            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 64),
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                        CircleAvatar(
+                          radius: 100,
+                          backgroundColor: Colors.transparent,
 
-                      child: Icon(CupertinoIcons.person_solid, size: 60, color: Colors.white),
+                          child: Icon(CupertinoIcons.person_solid, size: 60, color: Colors.white),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'Дмитрий Островский',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.manrope(fontSize: 40, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Middle Flutter Developer',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(fontSize: 18),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'https://github.com/QUSAD-prod | qusad.prod@gmail.com',
+                          style: GoogleFonts.jetBrainsMono(),
+                        ),
+                        SizedBox(height: 40.h),
+                      ],
                     ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'Дмитрий Островский',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.manrope(fontSize: 40, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Middle Flutter Developer',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.inter(fontSize: 18),
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'https://github.com/QUSAD-prod | qusad.prod@gmail.com',
-                      style: GoogleFonts.jetBrainsMono(),
-                    ),
-                    SizedBox(height: 80.h),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
