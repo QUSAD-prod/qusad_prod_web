@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qusad_prod_web/core/widgets/hovered_web_anchor.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   opacity: 1 - _logoOpacity,
                   child: Container(
                     width: 100.w,
-                    padding: EdgeInsets.only(top: kToolbarHeight + 28, left: 2.w, right: 2.w),
+                    padding: EdgeInsets.only(top: kToolbarHeight + 28, left: 16, right: 16),
                     child: content(),
                   ),
                 ),
@@ -181,15 +181,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SizedBox(height: 32),
-        CircleAvatar(
-          radius: 100,
-          backgroundColor: Colors.transparent,
-
-          child: Icon(CupertinoIcons.person_solid, size: 60, color: Colors.white),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: Image.asset('assets/images/avatar.jpeg', width: 128, height: 128),
         ),
         const SizedBox(height: 20),
         Text(
-          'Дмитрий Островский',
+          'Dmitriy Ostrovskiy',
           textAlign: TextAlign.center,
           style: GoogleFonts.manrope(fontSize: 40, fontWeight: FontWeight.bold),
         ),
@@ -199,10 +197,14 @@ class _HomeScreenState extends State<HomeScreen> {
           textAlign: TextAlign.center,
           style: GoogleFonts.inter(fontSize: 18),
         ),
-        const SizedBox(height: 20),
-        Text(
-          'https://github.com/QUSAD-prod | qusad.prod@gmail.com',
-          style: GoogleFonts.jetBrainsMono(),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            HoveredWebAnchor(url: 'https://github.com/QUSAD-prod'),
+            Text(' | ', style: GoogleFonts.jetBrainsMono()),
+            HoveredWebAnchor(label: 'qusad.prod@gmail.com', url: 'mailto:qusad.prod@gmail.com'),
+          ],
         ),
         SizedBox(height: 40.h),
       ],
