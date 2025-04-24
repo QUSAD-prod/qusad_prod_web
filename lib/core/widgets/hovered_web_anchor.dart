@@ -21,7 +21,7 @@ class HoveredWebAnchor extends StatefulWidget {
 
 class HoveredWebAnchorState extends State<HoveredWebAnchor> {
   /// Current text style
-  TextStyle _textStyle = GoogleFonts.jetBrainsMono();
+  TextStyle _textStyle = GoogleFonts.jetBrainsMono(fontSize: 16);
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +31,12 @@ class HoveredWebAnchorState extends State<HoveredWebAnchor> {
       onHover: (hovered) {
         setState(() {
           if (hovered) {
-            _textStyle = GoogleFonts.jetBrainsMono();
+            _textStyle = GoogleFonts.jetBrainsMono(fontSize: 16);
             if (widget.underlined) {
               _textStyle = _textStyle.copyWith(decoration: TextDecoration.underline);
             }
           } else {
-            _textStyle = GoogleFonts.jetBrainsMono();
+            _textStyle = GoogleFonts.jetBrainsMono(fontSize: 16);
           }
         });
       },

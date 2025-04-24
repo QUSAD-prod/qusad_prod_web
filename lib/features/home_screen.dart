@@ -66,10 +66,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   opacity: 1 - _logoOpacity,
                   child: Container(
                     width: 100.w,
-                    padding: EdgeInsets.only(top: kToolbarHeight + 28, left: 16, right: 16),
+                    padding: EdgeInsets.only(top: kToolbarHeight + 28, left: 32, right: 32),
                     child: content(),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Divider(height: 0.2, thickness: 0.2),
+                ),
+                SizedBox(height: 96),
               ],
             ),
           ),
@@ -181,33 +186,118 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SizedBox(height: 32),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: Image.asset('assets/images/avatar.jpeg', width: 128, height: 128),
+        Align(alignment: Alignment.topLeft, child: basicInfoWidget()),
+        SizedBox(height: 24),
+        Align(alignment: Alignment.topRight, child: linksWidget()),
+        SizedBox(height: 32),
+        Center(
+          child: Text(
+            'Skills',
+            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 64),
+          ),
         ),
-        const SizedBox(height: 20),
-        Text(
-          'Dmitriy Ostrovskiy',
-          textAlign: TextAlign.center,
-          style: GoogleFonts.manrope(fontSize: 40, fontWeight: FontWeight.bold),
+        SizedBox(height: 32),
+        SizedBox(
+          width: 512,
+          child: Text(
+            'Dart Flutter (High level)\nJava Android (Intermediate level)\nPython (Intermediate level)\nHTML / CSS (Basic level)\nC++ (Basic level)\nGithub (Intermediate level)\nFigma (High level)\n\nClean architecture, Firebase, OneSignal, Google AdMob, Hive, Bloc, GetIt, GoRouter, AutoRoute, Dio, Talker, OpenVpn\n\nRussian (C2)\nEnglish (A2-B1)',
+            textAlign: TextAlign.start,
+            style: GoogleFonts.jetBrainsMono(),
+          ),
         ),
-        const SizedBox(height: 12),
-        Text(
-          'Middle Flutter Developer',
-          textAlign: TextAlign.center,
-          style: GoogleFonts.inter(fontSize: 18),
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            HoveredWebAnchor(url: 'https://github.com/QUSAD-prod'),
-            Text(' | ', style: GoogleFonts.jetBrainsMono()),
-            HoveredWebAnchor(label: 'qusad.prod@gmail.com', url: 'mailto:qusad.prod@gmail.com'),
-          ],
-        ),
-        SizedBox(height: 40.h),
       ],
+    );
+  }
+
+  Widget linksWidget() {
+    return Container(
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white, width: 0.2),
+      ),
+      constraints: BoxConstraints(maxWidth: 100.w - 64),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Links', style: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w200)),
+          const SizedBox(height: 8),
+          Table(
+            defaultColumnWidth: FixedColumnWidth(100.w > 100.h ? 20.w : 50.w - 44),
+            children: [
+              TableRow(
+                children: [
+                  HoveredWebAnchor(label: "• GitHub", url: 'https://github.com/QUSAD-prod'),
+                  HoveredWebAnchor(
+                    label: '• Linkedin',
+                    url: 'https://www.linkedin.com/in/dmitriy-ostrovskiy-ab6615355/',
+                  ),
+                ],
+              ),
+              TableRow(
+                children: [
+                  HoveredWebAnchor(label: '• Telegram', url: 'https://t.me/prodbyqusad'),
+                  HoveredWebAnchor(label: '• E-mail', url: 'mailto:qusad.prod@gmail.com'),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget basicInfoWidget() {
+    return Container(
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white, width: 0.2),
+      ),
+      constraints: BoxConstraints(
+        minWidth: 100.w > 100.h ? 50.w : 100.w - 64,
+        maxWidth: 100.w - 64,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.asset('assets/images/avatar.jpeg', width: 128, height: 128),
+          ),
+          const SizedBox(width: 16),
+          ConstrainedBox(
+            constraints: BoxConstraints(minHeight: 128, maxHeight: 256, maxWidth: 100.w - 232.4),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Dmitriy Ostrovskiy',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.manrope(fontSize: 36, fontWeight: FontWeight.bold),
+                  maxLines: 2,
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Middle Flutter Developer (3+ years of flutter experience)',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inter(fontSize: 16),
+                  maxLines: 2,
+                ),
+                SizedBox(height: 4),
+                Text(
+                  '19 y.o. | Russian Federation, Ryazan',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.jetBrainsMono(),
+                  maxLines: 2,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
