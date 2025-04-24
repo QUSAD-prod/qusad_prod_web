@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qusad_prod_web/core/widgets/hovered_web_anchor.dart';
@@ -109,13 +110,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   'QUSAD.prod',
                   style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 64),
                 ),
-                Text(
-                  'Middle Flutter Developer',
-                  style: GoogleFonts.raleway(
-                    fontWeight: FontWeight.w100,
-                    fontSize: 24,
-                    height: 0.5,
-                  ),
+                AnimatedTextKit(
+                  repeatForever: true,
+                  pause: Duration(seconds: 5),
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      "Middle Flutter Developer",
+                      textStyle: GoogleFonts.raleway(
+                        fontWeight: FontWeight.w100,
+                        fontSize: 24,
+                        height: 0.5,
+                      ),
+                      speed: Duration(milliseconds: 100),
+                    ),
+                  ],
                 ),
               ],
             ),
