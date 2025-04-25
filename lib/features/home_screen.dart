@@ -16,6 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
   late ScrollPosition _position;
 
   double _logoOpacity = 1;
+  double _aboutOpacity = 0;
+  double _basicInfoOffset = -1;
+  double _linksOffset = 1;
 
   @override
   void initState() {
@@ -32,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void scrollListenner() {
     _position = _controller.position;
-    // debugPrint(_position.pixels.toString());
     if (_position.pixels >= 0 && _position.pixels < 70.h) {
       setState(() {
         _logoOpacity = 1 - _position.pixels / 70.h;
@@ -40,6 +42,20 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (_position.pixels > 70.h) {
       setState(() {
         _logoOpacity = 0;
+      });
+    }
+
+    if (_position.pixels <= 90.h) {
+      setState(() {
+        _aboutOpacity = _position.pixels / 90.h;
+        _basicInfoOffset = -1 + (_position.pixels / 90.h);
+        _linksOffset = 1 - (_position.pixels / 90.h);
+      });
+    } else if (_position.pixels > 90.h) {
+      setState(() {
+        _aboutOpacity = 1;
+        _basicInfoOffset = 0;
+        _linksOffset = 0;
       });
     }
   }
@@ -112,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 AnimatedTextKit(
                   repeatForever: true,
-                  pause: Duration(seconds: 5),
+                  pause: Duration(seconds: 3),
                   animatedTexts: [
                     TypewriterAnimatedText(
                       "Middle Flutter Developer",
@@ -194,9 +210,21 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SizedBox(height: 32),
-        Align(alignment: Alignment.topLeft, child: basicInfoWidget()),
+        Transform.translate(
+          offset: Offset(_basicInfoOffset * 100.w, 0),
+          child: Opacity(
+            opacity: _aboutOpacity,
+            child: Align(alignment: Alignment.topLeft, child: basicInfoWidget()),
+          ),
+        ),
         SizedBox(height: 24),
-        Align(alignment: Alignment.topRight, child: linksWidget()),
+        Transform.translate(
+          offset: Offset(_linksOffset * 100.w, 0),
+          child: Opacity(
+            opacity: _aboutOpacity,
+            child: Align(alignment: Alignment.topRight, child: linksWidget()),
+          ),
+        ),
         SizedBox(height: 32),
         Center(
           child: Text(
@@ -221,6 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
+        color: Colors.white.withAlpha(16),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.white, width: 0.2),
       ),
@@ -260,6 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
+        color: Colors.white.withAlpha(16),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.white, width: 0.2),
       ),
@@ -269,6 +299,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(100),
@@ -284,10 +315,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   'Dmitriy Ostrovskiy',
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.manrope(fontSize: 36, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.manrope(fontSize: 36, fontWeight: FontWeight.bold, height: 1),
                   maxLines: 2,
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 12),
                 Text(
                   'Middle Flutter Developer (3+ years of flutter experience)',
                   textAlign: TextAlign.center,
