@@ -90,9 +90,7 @@ Widget linksWidget() {
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(width: 8),
-        Transform.rotate(angle: pi / 12, child: Icon(Icons.chat_outlined, size: 36)),
-        const SizedBox(width: 16),
+        SizedBox(width: 72, child: Center(child: Icon(Icons.chat_outlined, size: 36))),
         Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +98,7 @@ Widget linksWidget() {
             Text('Links', style: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w200)),
             const SizedBox(height: 8),
             Table(
-              defaultColumnWidth: FixedColumnWidth(100.w > 100.h ? 15.w : 50.w - 44),
+              defaultColumnWidth: FixedColumnWidth(100.w > 100.h ? 15.w : 50.w - 80.2),
               children: [
                 TableRow(
                   children: [
