@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _logoOpacity > 0.9
                   ? () => _controller.animateTo(
                     100.h,
-                    duration: Duration(milliseconds: 500),
+                    duration: Duration(milliseconds: 800),
                     curve: Curves.easeInOut,
                   )
                   : null,
@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap:
                 () => _controller.animateTo(
                   0,
-                  duration: Duration(milliseconds: 500),
+                  duration: Duration(milliseconds: 800),
                   curve: Curves.easeInOut,
                 ),
             child: Padding(
