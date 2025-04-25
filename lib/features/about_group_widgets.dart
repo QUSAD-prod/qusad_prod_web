@@ -27,20 +27,18 @@ Widget basicInfoWidget() {
               Text(
                 'Dmitriy Ostrovskiy',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.manrope(fontSize: 36, fontWeight: FontWeight.w600, height: 1),
+                style: GoogleFonts.manrope(fontSize: 28, fontWeight: FontWeight.w600, height: 1),
                 maxLines: 2,
               ),
               SizedBox(height: 8),
               Text(
                 "Middle Flutter Developer (3+ years of flutter experience)",
-                textAlign: TextAlign.center,
                 style: GoogleFonts.jetBrainsMono(),
                 maxLines: 2,
               ),
               SizedBox(height: 4),
               Text(
                 "19 y.o. | Russian Federation, Ryazan",
-                textAlign: TextAlign.center,
                 style: GoogleFonts.jetBrainsMono(),
                 maxLines: 2,
               ),

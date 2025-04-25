@@ -60,16 +60,16 @@ class _HomeScreenState extends State<HomeScreen> {
         _aboutOpacity = _position.pixels / 90.h;
         _basicInfoOffset = 0;
         _summaryOffset = 1 - (_position.pixels / 90.h);
-        _linksOffset = -1 + (_position.pixels / 105.h);
+        _linksOffset = -1 + (_position.pixels / 100.h);
       });
-    } else if (_position.pixels < 105.h) {
+    } else if (_position.pixels < 100.h) {
       setState(() {
         _aboutOpacity = 1;
         _basicInfoOffset = 0;
         _summaryOffset = 0;
-        _linksOffset = -1 + (_position.pixels / 105.h);
+        _linksOffset = -1 + (_position.pixels / 100.h);
       });
-    } else if (_position.pixels > 105.h) {
+    } else if (_position.pixels > 100.h) {
       setState(() {
         _aboutOpacity = 1;
         _basicInfoOffset = 0;
@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   'QUSAD.prod',
-                  style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 64),
+                  style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 58),
                 ),
                 AnimatedTextKit(
                   repeatForever: true,
@@ -225,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Center(
           child: Text(
             'About me',
-            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 64),
+            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 54),
           ),
         ),
         SizedBox(height: 32),
@@ -256,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Center(
           child: Text(
             'Skills',
-            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 64),
+            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 54),
           ),
         ),
         SizedBox(height: 32),
