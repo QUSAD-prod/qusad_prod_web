@@ -23,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   double _aboutOpacity = 0;
   double _basicInfoOffset = -1;
   double _summaryOffset = 1;
+  double _linksOffset = -1;
 
   @override
   void initState() {
@@ -54,18 +55,28 @@ class _HomeScreenState extends State<HomeScreen> {
         _aboutOpacity = _position.pixels / 90.h;
         _basicInfoOffset = -1 + (_position.pixels / 65.h);
         _summaryOffset = 1 - (_position.pixels / 90.h);
+        _linksOffset = -1 + (_position.pixels / 105.h);
       });
     } else if (_position.pixels < 90.h) {
       setState(() {
         _aboutOpacity = _position.pixels / 90.h;
         _basicInfoOffset = 0;
         _summaryOffset = 1 - (_position.pixels / 90.h);
+        _linksOffset = -1 + (_position.pixels / 105.h);
       });
-    } else if (_position.pixels > 90.h) {
+    } else if (_position.pixels < 105.h) {
       setState(() {
         _aboutOpacity = 1;
         _basicInfoOffset = 0;
         _summaryOffset = 0;
+        _linksOffset = -1 + (_position.pixels / 105.h);
+      });
+    } else if (_position.pixels > 105.h) {
+      setState(() {
+        _aboutOpacity = 1;
+        _basicInfoOffset = 0;
+        _summaryOffset = 0;
+        _linksOffset = 0;
       });
     }
   }
@@ -236,9 +247,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SizedBox(height: 24),
-        Opacity(
-          opacity: _aboutOpacity,
-          child: Align(alignment: Alignment.topLeft, child: linksWidget()),
+        Transform.translate(
+          offset: Offset(_linksOffset * 100.w, 0),
+          child: Opacity(
+            opacity: _aboutOpacity,
+            child: Align(alignment: Alignment.topLeft, child: linksWidget()),
+          ),
         ),
         SizedBox(height: 32),
         Center(
