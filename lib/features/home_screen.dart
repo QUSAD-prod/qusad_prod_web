@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:qusad_prod_web/core/widgets/hovered_web_anchor.dart';
 import 'package:sizer/sizer.dart';
 
@@ -127,7 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
       surfaceTintColor: Colors.transparent,
       foregroundColor: Theme.of(context).colorScheme.primary.withValues(alpha: 1 - _logoOpacity),
       centerTitle: true,
-      title: Text('QUSAD.prod', style: GoogleFonts.raleway(fontWeight: FontWeight.w100)),
+      title: Text(
+        'QUSAD.prod',
+        style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.w100),
+      ),
       automaticallyImplyLeading: false,
       elevation: 0,
     );
@@ -143,7 +145,11 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   'QUSAD.prod',
-                  style: GoogleFonts.raleway(fontWeight: FontWeight.w200, fontSize: 58),
+                  style: TextStyle(
+                    fontFamily: 'Raleway',
+                    fontWeight: FontWeight.w200,
+                    fontSize: 58,
+                  ),
                 ),
                 AnimatedTextKit(
                   repeatForever: true,
@@ -151,7 +157,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   animatedTexts: [
                     TypewriterAnimatedText(
                       "Middle Flutter Developer",
-                      textStyle: GoogleFonts.raleway(
+                      textStyle: TextStyle(
+                        fontFamily: 'Raleway',
                         fontWeight: FontWeight.w100,
                         fontSize: 24,
                         height: 0.5,
@@ -225,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Center(
           child: Text(
             'About me',
-            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 54),
+            style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.w100, fontSize: 54),
           ),
         ),
         SizedBox(height: 32),
@@ -256,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Center(
           child: Text(
             'Skills',
-            style: GoogleFonts.raleway(fontWeight: FontWeight.w100, fontSize: 54),
+            style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.w100, fontSize: 54),
           ),
         ),
         SizedBox(height: 32),
@@ -265,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Text(
             'Dart Flutter (High level)\nJava Android (Intermediate level)\nPython (Intermediate level)\nHTML / CSS (Basic level)\nC++ (Basic level)\nGithub (Intermediate level)\nFigma (High level)\n\nClean architecture, Firebase, OneSignal, Google AdMob, Hive, Bloc, GetIt, GoRouter, AutoRoute, Dio, Talker, OpenVpn\n\nRussian (C2)\nEnglish (A2-B1)',
             textAlign: TextAlign.start,
-            style: GoogleFonts.jetBrainsMono(),
+            style: TextStyle(fontFamily: 'JetBrainsMono'),
           ),
         ),
       ],

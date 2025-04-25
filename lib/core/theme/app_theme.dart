@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
@@ -14,13 +13,14 @@ class AppTheme {
       onSecondary: Colors.white,
     ),
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.manrope(
+      displayLarge: TextStyle(
+        fontFamily: 'Manrope',
         fontSize: 36,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      bodyLarge: GoogleFonts.inter(fontSize: 16, color: Color(0xFF2C2C2C)),
-      bodySmall: GoogleFonts.jetBrainsMono(fontSize: 14, color: Color(0xFF757575)),
+      bodyLarge: TextStyle(fontFamily: 'Inter', fontSize: 16, color: Color(0xFF2C2C2C)),
+      bodySmall: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 14, color: Color(0xFF757575)),
     ),
   );
 
@@ -36,13 +36,14 @@ class AppTheme {
       onSecondary: Colors.white,
     ),
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.manrope(
+      displayLarge: TextStyle(
+        fontFamily: 'Manrope',
         fontSize: 36,
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
-      bodyLarge: GoogleFonts.inter(fontSize: 16, color: Color(0xFFE0E0E0)),
-      bodySmall: GoogleFonts.jetBrainsMono(fontSize: 14, color: Color(0xFFB0B0B0)),
+      bodyLarge: TextStyle(fontFamily: 'Inter', fontSize: 16, color: Color(0xFFE0E0E0)),
+      bodySmall: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 14, color: Color(0xFFB0B0B0)),
     ),
   );
 }

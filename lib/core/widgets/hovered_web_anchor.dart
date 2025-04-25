@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 /// Provides an anchor link to web URL.
@@ -21,7 +20,7 @@ class HoveredWebAnchor extends StatefulWidget {
 
 class HoveredWebAnchorState extends State<HoveredWebAnchor> {
   /// Current text style
-  TextStyle _textStyle = GoogleFonts.jetBrainsMono(fontSize: 16);
+  TextStyle _textStyle = TextStyle(fontFamily: 'JetBrainsMono');
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +30,12 @@ class HoveredWebAnchorState extends State<HoveredWebAnchor> {
       onHover: (hovered) {
         setState(() {
           if (hovered) {
-            _textStyle = GoogleFonts.jetBrainsMono(fontSize: 16);
+            _textStyle = TextStyle(fontFamily: 'JetBrainsMono');
             if (widget.underlined) {
               _textStyle = _textStyle.copyWith(decoration: TextDecoration.underline);
             }
           } else {
-            _textStyle = GoogleFonts.jetBrainsMono(fontSize: 16);
+            _textStyle = TextStyle(fontFamily: 'JetBrainsMono');
           }
         });
       },

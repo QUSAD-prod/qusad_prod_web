@@ -27,19 +27,24 @@ Widget basicInfoWidget() {
               Text(
                 'Dmitriy Ostrovskiy',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.manrope(fontSize: 28, fontWeight: FontWeight.w600, height: 1),
+                style: TextStyle(
+                  fontFamily: 'Manrope',
+                  fontSize: 28,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                ),
                 maxLines: 2,
               ),
               SizedBox(height: 8),
               Text(
                 "Middle Flutter Developer (3+ years of flutter experience)",
-                style: GoogleFonts.jetBrainsMono(),
+                style: TextStyle(fontFamily: 'JetBrainsMono'),
                 maxLines: 2,
               ),
               SizedBox(height: 4),
               Text(
                 "19 y.o. | Russian Federation, Ryazan",
-                style: GoogleFonts.jetBrainsMono(),
+                style: TextStyle(fontFamily: 'JetBrainsMono'),
                 maxLines: 2,
               ),
               SizedBox(height: 4),
@@ -64,11 +69,14 @@ Widget summaryWidget() {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Summary', style: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w200)),
+        Text(
+          'Summary',
+          style: TextStyle(fontFamily: 'Inter', fontSize: 24, fontWeight: FontWeight.w200),
+        ),
         const SizedBox(height: 8),
         Text(
           "Results-driven software developer with over three years of experience in software engineering and research. I strive to create intuitive and user-friendly interfaces while writing clean, readable, and maintainable code. I place a strong emphasis on the quality of the solutions I build and their real-world value to end users. Continuously expanding my technical knowledge and skills, I stay up to date with modern technologies and development practices to remain effective in the fast-paced IT industry.",
-          style: GoogleFonts.jetBrainsMono(),
+          style: TextStyle(fontFamily: 'JetBrainsMono'),
         ),
         const SizedBox(height: 4),
       ],
@@ -93,7 +101,10 @@ Widget linksWidget() {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Links', style: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.w200)),
+            Text(
+              'Links',
+              style: TextStyle(fontFamily: 'Inter', fontSize: 24, fontWeight: FontWeight.w200),
+            ),
             const SizedBox(height: 8),
             Table(
               defaultColumnWidth: FixedColumnWidth(100.w > 100.h ? 15.w : 50.w - 80.2),
